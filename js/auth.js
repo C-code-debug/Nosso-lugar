@@ -83,4 +83,5 @@ function showApp() {
   document.getElementById('appWrapper').style.display = 'block';
   initTheme();
   initCounter();
+  setTimeout(initEffects, 100);
 }

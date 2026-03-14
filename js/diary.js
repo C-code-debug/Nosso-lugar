@@ -32,6 +32,7 @@ function setupDiaryForm() {
       document.getElementById('diaryTitle').value = '';
       document.getElementById('diaryText').value  = '';
       showToast('entrada salva ♥');
+      if (window.soundSave) soundSave();
       loadDiaryEntries();
     } catch (e) {
       console.error(e);
@@ -86,6 +87,18 @@ function createDiaryEntry(id, data) {
   `;
 
   entry.querySelector('.diary-entry-delete').addEventListener('click', () => deleteDiaryEntry(id, entry));
+
+  // Botão copiar
+  if (window.addCopyButton) {
+    addCopyButton(entry.querySelector('.diary-entry-header'), () =>
+      `${data.title}\n\n${data.text}`
+    );
+  }
+
+  // Reveal animation
+  entry.classList.add('reveal');
+  setTimeout(() => entry.classList.add('visible'), 50);
+
   return entry;
 }
 
@@ -141,6 +154,7 @@ function setupPhrasesForm() {
       });
       input.value = '';
       showToast('frase adicionada ♥');
+      if (window.soundSave) soundSave();
       loadPhrases();
     } catch (e) {
       console.error(e);
@@ -235,6 +249,16 @@ function createPhraseCard(id, data) {
   });
 
   deleteBtn.addEventListener('click', () => deletePhraseCard(id, card));
+
+  // Botão copiar
+  if (window.addCopyButton) {
+    addCopyButton(card, () => data.text);
+  }
+
+  // Reveal
+  card.classList.add('reveal');
+  setTimeout(() => card.classList.add('visible'), 50);
+
   return card;
 }
 

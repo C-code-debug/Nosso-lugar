@@ -11,20 +11,92 @@
 }
 
 .counter-heart {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--heart-color);
   display: block;
   margin-bottom: 12px;
   animation: heartbeat 1.8s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px var(--heart-color));
+  filter: drop-shadow(0 0 12px var(--heart-color));
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+.counter-heart:active {
+  animation: heartbeat-tap 0.3s ease;
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15%       { transform: scale(1.18); }
-  30%       { transform: scale(1); }
-  45%       { transform: scale(1.1); }
-  60%       { transform: scale(1); }
+  0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 8px var(--heart-color)); }
+  15%       { transform: scale(1.22); filter: drop-shadow(0 0 18px var(--heart-color)); }
+  30%       { transform: scale(1);    filter: drop-shadow(0 0 8px var(--heart-color)); }
+  45%       { transform: scale(1.12); filter: drop-shadow(0 0 14px var(--heart-color)); }
+  60%       { transform: scale(1);    filter: drop-shadow(0 0 8px var(--heart-color)); }
+}
+
+@keyframes heartbeat-tap {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* Mensagem especial de aniversário */
+.anniversary-banner {
+  background: var(--nav-active-bg);
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  padding: 18px 22px;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: banner-in 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+@keyframes banner-in {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.anniversary-banner-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: var(--accent);
+  text-shadow: var(--neon-shadow);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.anniversary-banner-text {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+}
+
+/* Botão copiar */
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.diary-entry:hover .copy-btn,
+.phrase-card:hover .copy-btn { opacity: 1; }
+
+.copy-btn:hover {
+  color: var(--accent);
+  background: var(--nav-active-bg);
+}
+
+.copy-btn.copied {
+  color: var(--accent);
+  opacity: 1;
 }
 
 .counter-label {
