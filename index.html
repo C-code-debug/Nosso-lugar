@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Lugar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Quicksand:wght@400;500;600&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/themes.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+</head>
+<body data-theme="gothic">
+
+  <!-- TELA DE SENHA -->
+  <div id="lockScreen">
+    <div class="lock-card">
+      <span class="lock-heart">♥</span>
+      <h1 class="lock-title">Nosso Lugar</h1>
+      <p class="lock-subtitle">um espaço só nosso</p>
+      <div class="lock-divider"></div>
+      <div class="lock-input-wrap">
+        <input type="password" id="lockInput" placeholder="••••••••" autocomplete="off"/>
+      </div>
+      <button id="lockBtn">entrar</button>
+      <div id="lockError">senha incorreta</div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="appWrapper" style="display:none">
+
+    <div class="particles" id="particles"></div>
+
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
+      <span class="icon" id="themeIcon">🌙</span>
+      <span id="themeLabel">modo fofo</span>
+    </button>
+
+    <div class="app">
+
+      <header>
+        <h1 class="site-title">Nosso Lugar</h1>
+        <p class="site-subtitle">um espaço só nosso</p>
+      </header>
+
+      <nav>
+        <button class="nav-btn active" onclick="showPage('home', this)">Início</button>
+        <button class="nav-btn" onclick="showPage('gallery', this)">Galeria</button>
+        <button class="nav-btn" onclick="showPage('diary', this)">Diário</button>
+        <button class="nav-btn" onclick="showPage('info', this)">Sobre nós</button>
+      </nav>
+
+      <!-- INÍCIO -->
+      <div class="page active" id="page-home">
+        <div class="card">
+          <div class="hero-counter">
+            <span class="counter-heart">♥</span>
+            <p class="counter-label">juntos há</p>
+            <div class="counter-months">
+              <span id="monthCount">0</span>
+              <span>meses</span>
+            </div>
+            <p class="counter-days" id="daysTotal"></p>
+          </div>
+          <hr class="divider"/>
+          <div class="next-anniversary">
+            <p class="next-label">próximo aniversário em</p>
+            <div class="next-countdown">
+              <div class="countdown-unit">
+                <span class="countdown-number" id="cdDays">--</span>
+                <span class="countdown-label">dias</span>
+              </div>
+              <span class="separator">:</span>
+              <div class="countdown-unit">
+                <span class="countdown-number" id="cdHours">--</span>
+                <span class="countdown-label">horas</span>
+              </div>
+              <span class="separator">:</span>
+              <div class="countdown-unit">
+                <span class="countdown-number" id="cdMins">--</span>
+                <span class="countdown-label">min</span>
+              </div>
+              <span class="separator">:</span>
+              <div class="countdown-unit">
+                <span class="countdown-number" id="cdSecs">--</span>
+                <span class="countdown-label">seg</span>
+              </div>
+            </div>
+            <p class="counter-days" style="margin-top:14px">
+              <strong id="nextDateLabel" style="color:var(--accent2)"></strong>
+            </p>
+          </div>
+        </div>
+        <div style="margin-top:28px">
+          <p class="section-label">aniversários passados</p>
+          <div class="anniversary-search-wrap">
+            <input type="text" class="anniversary-search" id="anniversarySearch" placeholder="pesquisar por mês, data ou descrição..."/>
+            <span class="anniversary-count" id="anniversaryCount"></span>
+          </div>
+          <div class="anniversary-scroll-box">
+            <div class="anniversary-list" id="anniversaryList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALERIA -->
+      <div class="page" id="page-gallery">
+        <div class="card">
+          <div class="gallery-header">
+            <p class="section-label" style="margin:0">nossa galeria</p>
+          </div>
+          <div class="albums-bar" id="albumsBar"></div>
+          <div class="upload-area" id="uploadArea">
+            <input type="file" id="photoInput" accept="image/*" multiple/>
+            <span class="upload-icon">📷</span>
+            <p class="upload-text" id="uploadText">solte fotos aqui ou clique para escolher</p>
+            <p class="upload-subtext">jpg, png, gif — várias fotos de uma vez</p>
+          </div>
+          <div class="photo-grid" id="photoGrid">
+            <div class="gallery-empty" style="grid-column:1/-1">
+              <span class="icon">🖼️</span>
+              <p>nenhuma foto ainda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIÁRIO -->
+      <div class="page" id="page-diary">
+        <div class="card">
+          <p class="section-label">nosso diário</p>
+          <form class="diary-form" id="diaryForm">
+            <input type="text" class="diary-input" id="diaryTitle" placeholder="título da entrada..." maxlength="80"/>
+            <textarea class="diary-textarea" id="diaryText" placeholder="o que aconteceu hoje..." rows="4"></textarea>
+            <button type="submit" class="diary-submit">salvar entrada</button>
+          </form>
+          <hr class="divider"/>
+          <div class="diary-list" id="diaryList">
+            <div class="diary-empty">
+              <span class="icon">📖</span>
+              <p>nenhuma entrada ainda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOBRE NÓS -->
+      <div class="page" id="page-info">
+        <div class="card">
+          <p class="section-label">palavras pra animar</p>
+          <form class="phrases-form" id="phrasesForm">
+            <textarea class="phrases-input" id="phraseInput" placeholder="escreva uma frase de incentivo..." rows="2"></textarea>
+            <button type="submit" class="phrases-submit">enviar</button>
+          </form>
+          <div class="phrases-grid" id="phrasesGrid">
+            <div class="phrases-empty">
+              <span class="icon">💬</span>
+              <p>nenhuma frase ainda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /app -->
+
+    <!-- Modal de foto -->
+    <div class="photo-modal" id="photoModal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="foto"/>
+      </div>
+      <div class="modal-toolbar">
+        <button class="modal-btn" onclick="modalNav(-1)" title="anterior">←</button>
+        <span id="modalCounter" style="font-family:var(--font-title);font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;min-width:48px;text-align:center"></span>
+        <button class="modal-btn" onclick="modalNav(1)" title="próxima">→</button>
+      </div>
+    </div>
+
+  </div><!-- /appWrapper -->
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/counter.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/diary.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

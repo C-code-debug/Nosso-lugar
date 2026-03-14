@@ -1,0 +1,8 @@
+const firebaseConfig = {
+  apiKey:            "AIzaSyC5P8MEyV5Va2I4zWpmyJ1T1JzF4Fp6O2w",
+  authDomain:        "nosso-lugar-9bcf6.firebaseapp.com",
+  projectId:         "nosso-lugar-9bcf6",
+  storageBucket:     "nosso-lugar-9bcf6.firebasestorage.app",
+  messagingSenderId: "865539049756",
+  appId:             "1:865539049756:web:148b917035a463a9e0d2d9",
+};

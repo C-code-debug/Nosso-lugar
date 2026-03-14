@@ -1,0 +1,55 @@
+/* =============================================
+   THEMES.CSS — Variáveis dos dois temas
+============================================= */
+
+:root {
+  --transition-theme: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* TEMA GÓTICO */
+[data-theme="gothic"] {
+  --bg-primary:     #0a0a0f;
+  --bg-secondary:   #10101a;
+  --bg-card:        #13131f;
+  --bg-card-hover:  #1a1a2e;
+  --text-primary:   #e8e0f0;
+  --text-secondary: #a090c0;
+  --text-muted:     #604880;
+  --accent:         #9b30ff;
+  --accent-soft:    #6b1fcc;
+  --accent-glow:    rgba(155, 48, 255, 0.4);
+  --accent2:        #cc44ff;
+  --border:         rgba(155, 48, 255, 0.3);
+  --border-bright:  rgba(155, 48, 255, 0.7);
+  --neon-shadow:    0 0 8px rgba(155,48,255,0.6), 0 0 20px rgba(155,48,255,0.3);
+  --font-display:   'UnifrakturMaguntia', cursive;
+  --font-title:     'Cinzel', serif;
+  --font-body:      'Cinzel', serif;
+  --heart-color:    #9b30ff;
+  --nav-active-bg:  rgba(155,48,255,0.15);
+  --scrollbar:      #9b30ff;
+}
+
+/* TEMA FOFO */
+[data-theme="cute"] {
+  --bg-primary:     #fdf6ff;
+  --bg-secondary:   #f8eeff;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #fff0fb;
+  --text-primary:   #3a2040;
+  --text-secondary: #7a4090;
+  --text-muted:     #b080c0;
+  --accent:         #ff6eb4;
+  --accent-soft:    #ff9dd0;
+  --accent-glow:    rgba(255,110,180,0.3);
+  --accent2:        #00d4e8;
+  --border:         rgba(255,110,180,0.25);
+  --border-bright:  rgba(255,110,180,0.6);
+  --neon-shadow:    0 0 6px rgba(255,110,180,0.5), 0 0 16px rgba(0,212,232,0.2);
+  --font-display:   'Pacifico', cursive;
+  --font-title:     'Quicksand', sans-serif;
+  --font-body:      'Quicksand', sans-serif;
+  --heart-color:    #ff6eb4;
+  --nav-active-bg:  rgba(255,110,180,0.1);
+  --scrollbar:      #ff6eb4;
+}
