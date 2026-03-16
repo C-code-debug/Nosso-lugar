@@ -80,22 +80,30 @@ function createDiaryEntry(id, data) {
   entry.innerHTML = `
     <div class="diary-entry-header">
       <span class="diary-entry-title">${escapeHtml(data.title)}</span>
-      <span class="diary-entry-date">${date}</span>
+      <div class="diary-entry-actions">
+        <button class="copy-btn" title="copiar">⎘</button>
+        <button class="diary-entry-delete" title="remover entrada">✕</button>
+      </div>
     </div>
+    <span class="diary-entry-date">${date}</span>
     <p class="diary-entry-text">${escapeHtml(data.text)}</p>
-    <button class="diary-entry-delete" title="remover entrada">✕</button>
   `;
 
-  entry.querySelector('.diary-entry-delete').addEventListener('click', () => deleteDiaryEntry(id, entry));
+  const copyBtn  = entry.querySelector('.copy-btn');
+  const delBtn   = entry.querySelector('.diary-entry-delete');
 
-  // Botão copiar
-  if (window.addCopyButton) {
-    addCopyButton(entry.querySelector('.diary-entry-header'), () =>
-      `${data.title}\n\n${data.text}`
-    );
-  }
+  copyBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(`${data.title}\n\n${data.text}`).then(() => {
+      copyBtn.textContent = '✓';
+      copyBtn.classList.add('copied');
+      if (window.soundCopy) soundCopy();
+      setTimeout(() => { copyBtn.textContent = '⎘'; copyBtn.classList.remove('copied'); }, 1800);
+    });
+  });
 
-  // Reveal animation
+  delBtn.addEventListener('click', () => deleteDiaryEntry(id, entry));
+
   entry.classList.add('reveal');
   setTimeout(() => entry.classList.add('visible'), 50);
 

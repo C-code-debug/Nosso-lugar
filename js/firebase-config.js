@@ -11,7 +11,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore, collection, addDoc, getDocs,
-  deleteDoc, doc, setDoc, updateDoc, orderBy, query, serverTimestamp
+  deleteDoc, doc, setDoc, updateDoc, orderBy,
+  query, onSnapshot, limit, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // ⚠️ SUBSTITUA com as suas credenciais do Firebase:
@@ -30,7 +31,8 @@ window.firebaseDb = getFirestore(app);
 
 window.firebaseDbLib = {
   collection, addDoc, getDocs,
-  deleteDoc, doc, setDoc, updateDoc, orderBy, query, serverTimestamp
+  deleteDoc, doc, setDoc, updateDoc,
+  orderBy, query, onSnapshot, limit, serverTimestamp
 };
 
 console.log('Firebase conectado ✓');

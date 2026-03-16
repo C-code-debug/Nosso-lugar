@@ -84,4 +84,5 @@ function showApp() {
   initTheme();
   initCounter();
   setTimeout(initEffects, 100);
+  setTimeout(initChat, 300);
 }

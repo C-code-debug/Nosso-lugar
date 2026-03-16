@@ -129,11 +129,13 @@ header {
   color: var(--text-secondary);
   letter-spacing: 0.1em;
   box-shadow: var(--neon-shadow);
-  transition: all var(--transition-theme);
+  transition: background var(--transition-theme), color var(--transition-theme), border-color var(--transition-theme), box-shadow var(--transition-theme);
   display: flex;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .theme-toggle:hover {
